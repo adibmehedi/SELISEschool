@@ -1,59 +1,76 @@
 body{
-	font-family:arial;
+	font-family:sans-serif,arial;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
 }
 /* heading start */
 header{
 	width:100%;
-	height:70px;
-	background-color:yellow;
+	height:89px;
 	display:inline-block;
 }
 .logo-container{
-	padding-top:10px;
+	padding-top:24px;
 	width:40%;
-	background-color:pink;
 	float:left;
 }
 
 .header-title{
 	float:left;
 	padding-top:5px;
-	padding-left:10px;
-	color:white;
-	font-size:40px;
+	padding-left:15px;
+	font-size:33px;
 }
 
 .header-logo img{
 	float:left;
-	padding-left:80px;
-	max-width:50px;
+	padding-left:140px;
+	max-width:44px;
 }
 .navigation-container{
 	float:left;
 	width:60%;
 	height:100%;
+	padding-top:36px;
 }
 
 nav{
-	padding-left:200px;
-	padding-top: 10px;
+	padding-left:300px;
 }
+
 .navigation-links li{
+	color:rgb(145, 145, 145);
 	display:inline;
 	list-style:none;
-	padding:20px 10px;
-	border:1px solid black;
+	padding:20px 18px;
+	
+}
+.navigation-links li:hover{
+	border-bottom:4px solid rgb(80,148,242);
+}
+
+.navigation-links li a{
+	text-decoration: none;
 }
 
 
 
 .header-logo{
-	background-color:green;
 	float:left;
 }
 
 .header-title{
-	background-color:red;
+	
 }
 
 /* heading end */
+
+/* slider start */
+.slide-img img{
+	height:485px;
+}
+
+/* slider end */
