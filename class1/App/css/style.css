@@ -69,8 +69,35 @@ nav{
 /* heading end */
 
 /* slider start */
+
+.section-slider{
+    background:green;
+}
+
 .slide-img img{
 	height:485px;
 }
 
+.slide-text-container{
+    position:relative;
+    width:400px;
+    left:800px;
+    top:200px;
+}
+
+.slider-text{
+    color:white;
+}
+
+.sldier-btn{
+    color:white;
+    display:inline-block;
+    background-color:rgb(80,148,242);
+}
+
+
 /* slider end */
+
+.section-features{
+    background-color: red;
+}
