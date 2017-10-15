@@ -18,12 +18,17 @@ body{
 .pull-right{
 	float:right;
 }
+
 .main-container{
 	width:1250px;
 	margin:0 auto;
 	background-color:white;
 	overflow:hidden;
 
+}
+
+.text-center{
+	text-align:center;
 }
 
 /* heading start */
@@ -84,10 +89,6 @@ nav{
 .header-logo{
 	float:left;
 }
-
-.header-title{
-	
-}
 /* heading end */
 
 /* slider start */
@@ -104,7 +105,7 @@ nav{
     position: absolute;
     width:400px;
     left:625px;
-    top:270px;
+    top:200px;
 }
 
 .slider-text{
@@ -131,7 +132,6 @@ nav{
     color:white;
 	display:inline-block;
 	padding:7px 10px;
-	text-align:center;
     background-color:rgb(80,148,242);
 }
 
@@ -160,8 +160,6 @@ nav{
     height:186px;
 	border-radius:50%;
 	margin:0 auto;
-	text-align:center;
-	
 }
 
 .feature-first .feature-logo{
@@ -185,10 +183,6 @@ nav{
 	font-size:110px;
 }
 
-.feature-text{
-	text-align:center;
-}
-
 .feature-text h4{
 	font-size:15px;
 	color:rgb(80,148,242);
@@ -209,11 +203,9 @@ nav{
 }
 
 .description-image-container{
-	float:left;
 	width:360px;
 	padding:45px;
 	margin:10px;
-	text-align:center;
 }
 
 .description-image-container h3{
@@ -225,7 +217,6 @@ nav{
 }
 
 .description-text-container{
-	float:left;
 	padding-left:45px;
 	padding-top:100px;
 	margin:10px;
@@ -247,7 +238,6 @@ nav{
 /* footer start */
 
 footer{
-	text-align:center;
 	color:rgb(145, 145, 145);
 	font-size:13px;
 	padding-top:20px;
