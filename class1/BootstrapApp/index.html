@@ -18,7 +18,7 @@
 <body>
 	<header>
 		<nav class="navbar navbar-default">
-			<div class="container-fluid">
+			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						  <span class="icon-bar"></span>
@@ -42,45 +42,124 @@
 		</nav>
 	</header>
 
-	<div class="container slider">
-		<div class="row">
-			<div class="col-md-12">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-					</ol>
+	<section class="container">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
 
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<img src="la.jpg" alt="Los Angeles">
-						</div>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
 
-						<div class="item">
-							<img src="chicago.jpg" alt="Chicago">
-						</div>
-
-						<div class="item">
-							<img src="ny.jpg" alt="New York">
-						</div>
+				<div class="item active">
+					<img src="img/slider-main.jpg" alt="Los Angeles" style="width:100%;">
+					<div class="carousel-caption">
+						<h3>Lasd laksd lj aasd</h3>
+						<p>aAS AS sds ASd asd asd!</p>
 					</div>
+				</div>
 
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#myCarousel" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-						<span class="sr-only">Next</span>
-					</a>
+				<div class="item">
+					<img src="img/slider-tech.jpg" alt="Chicago" style="width:100%;">
+					<div class="carousel-caption">
+						<h3>Chicago</h3>
+						<p>Thank you, Chicago!</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="img/slider-color.jpg" alt="New York" style="width:100%;">
+					<div class="carousel-caption">
+						<h3>New York</h3>
+						<p>We love the Big Apple!</p>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		</div>
+	</section>
+
+	<section class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="feature-container feature-first">
+					<div class="feature-logo text-center">
+						<i class="fa fa-server" aria-hidden="true"></i>
+					</div>
+					<div class="feature-text text-center">
+						<h4>Contrary to popular</h4>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-container feature-second">
+					<div class="feature-logo text-center">
+						<i class="fa fa-television" aria-hidden="true"></i>
+					</div>
+					<div class="feature-text text-center">
+						<h4>Contrary to popular</h4>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-container feature-third">
+					<div class="feature-logo text-center">
+						<i class="fa fa-retweet" aria-hidden="true"></i>
+					</div>
+					<div class="feature-text text-center">
+						<h4>Contrary to popular</h4>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+
+	<!-- description -->
+	<section class="container">
+		<div class="row">
+			<div class="col-md-6 description-image-container text-center">
+				<h3>The Shopping Cart</h3>
+				<img src="img/shopping_cart.png" alt="Shopping Cart">
+			</div>
+			<div class="col-md-6 description-text-container">
+				<h4>Some Bullet text here</h4>
+				<p>
+					Lorem Ipsum is simply dummy text of the printing and typesetting it to make a type specimen Lorem Ipsum has been the industry's
+					standard dummy text ever ply dummy text of when an unknown printer took a galley of type and scrambled sum is simply
+					dummy text It was popularised in the 1960s with the release of Letraset nown printer took a galley of type it to make
+					a type specimen industry's standard dummy text ever ply dummy text of dummy text of the printing and typesetting it
+					to make a type specimen printer took a galley of type and scrambled sum is simply dummy text scrambled sum is
+				</p>
+			</div>
+		</div>
+	</section>
+	<!-- / description -->
+	<!-- footer -->
+	<footer class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+					Copyright 2002-2003 cssauthor.com
+			</div>
+		</div>
+	</footer>
+	<!-- / footer -->
+
 
 
 </body>

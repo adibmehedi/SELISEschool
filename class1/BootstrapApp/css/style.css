@@ -3,122 +3,37 @@ header{
 	
 }
 
+.navbar-default{
+	border-color:white;
+	background-color:white;
+}
+
 .navbar-brand img{
 	margin-top:-15px;
 	width:50px;
 }
 
-.header-title{
-	float:left;
-	padding-top:5px;
-	padding-left:15px;
-	font-size:33px;
-}
-
-.header-logo img{
-	float:left;
-	padding-left:140px;
-	max-width:44px;
-}
-.navigation-container{
-	width:60%;
-	height:100%;
-	padding-top:36px;
-	padding-right:116px;
-	max-width:400px;
+.navbar-brand{
+	font-size:27px;
 }
 
 nav{
 	margin-top:14px;
 }
 
-.navigation-links li{
-	color:rgb(145, 145, 145);
-	display:inline;
-	list-style:none;
-	padding:20px 18px;
-	
-}
-.navigation-links li:hover{
-	border-bottom:4px solid rgb(80,148,242);
-}
-
-.navigation-links li a{
-	font-weight:bold;
-	color:rgb(108,108, 108);
-	text-decoration: none;
-}
-
-
-
-.header-logo{
-	float:left;
-}
-/* heading end */
-
-/* slider start */
-#section-slider{
-	position: relative;
-}
-
-.slide-img img{
-	height:485px;
-}
-
-.slide-text-container{
-	font-family:sans-serif;
-    position: absolute;
-    width:400px;
-    left:625px;
-    top:200px;
-}
-
-.slider-text{
-    color:white;
-}
-
-.slider-text h3, p{
-	font-family: 'Raleway', sans-serif;
-
-}
-.slider-text h3{
-	font-size:30px;
-	padding-bottom:2px; 
-}
-
-.slider-text p{
-	font-size:16px;
-	padding:7px 0px;
-}
-
-.slider-btn{
-	margin-top:20px; 
-	margin-left:15px;
-    color:white;
-	display:inline-block;
-	padding:7px 10px;
-	border: none;
-    background-color:rgb(80,148,242);
-}
-
 /* slider end */
 
 /* features start */
-.section-features{
-	width:1250px;
-	display: table;
-}
 
 .feature-container{
-	display: table-cell;
-	width:222px;
+	width:100%;
 	padding-left:91px;
 	padding-right:91px;
 }
 .feature-logo{
 	border:0px solid black;
-	width:186px;    
-    height:186px;
+	height:200px;
+	width:200px;
 	border-radius:50%;
 	margin:0 auto;
 }
@@ -158,15 +73,9 @@ nav{
 /* features end*/
 
 /* description start */
-#section-description{
-	display: table;
-	padding-left:45px;
-}
 
 .description-image-container{
-	width:360px;
 	padding:45px;
-	margin:10px;
 }
 
 .description-image-container h3{
@@ -178,10 +87,7 @@ nav{
 }
 
 .description-text-container{
-	padding-left:45px;
 	padding-top:100px;
-	margin:10px;
-	width:570px;
 }
 
 .description-text-container p{
