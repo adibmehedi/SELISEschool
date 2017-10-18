@@ -52,13 +52,12 @@
     }
 
   var obj=new valueFunction();
-  var obj1=new valueFunction();
   obj.set(2);
   console.log(obj.get());
 
 })();
-
 */
+
 
 /*
 * Task: Array
@@ -68,9 +67,57 @@
     "use strict";
 
     var globalArray=[2,3,4];
-
     
-    //console.log(globalArray[0]);
+    var addMethods=function(){
+        return {
+            first:function(val){
+                globalArray.unshift(val);
+            },
+            last:function(val){
+                globalArray.push(val);
+            },
+            specific:function(val,index){
+                globalArray.splice(index,0,val);
+            }
+        }
+    }
 
+    var delMethods=function(){
+        return {
+            first:function(){
+                globalArray.shift();
+            },
+            last:function(){
+                globalArray.pop();
+            },
+            specific:function(index){
+                globalArray.splice(index,1);
+            }
+        }
+    }
 
+    var updateMethods=function(){
+        return{
+            specific:function(val,index){
+                globalArray[index]=val;
+            }
+        }
+    }
+
+    var add=new addMethods();
+    var del=new delMethods();
+    var updt=new updateMethods();
+    
+    console.log('Array:',globalArray);
+    //del.specific(0);
+    //add.last(3);
+    //del.last();
+    //updt.specific(100,2);
+   // console.log(globalArray);
+   document.getElementById("asd").innerHTML="Array: "+ globalArray.toString();
+   
 })();
+
+
+
+
