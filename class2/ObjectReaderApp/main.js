@@ -67,7 +67,8 @@
     "use strict";
 
     var globalArray=[2,3,4];
-    
+
+    //Add Methods Collection 
     var addMethods=function(){
         return {
             first:function(val){
@@ -82,6 +83,7 @@
         }
     }
 
+    //Delete Methods Collection 
     var delMethods=function(){
         return {
             first:function(){
@@ -96,6 +98,7 @@
         }
     }
 
+    //Update Methods Collection 
     var updateMethods=function(){
         return{
             specific:function(val,index){
