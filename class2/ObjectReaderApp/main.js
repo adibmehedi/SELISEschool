@@ -67,7 +67,8 @@
     "use strict";
 
     var globalArray=[2,3,4];
-    
+
+    //Add Methods Collection 
     var addMethods=function(){
         return {
             first:function(val){
@@ -82,6 +83,7 @@
         }
     }
 
+    //Delete Methods Collection 
     var delMethods=function(){
         return {
             first:function(){
@@ -96,6 +98,7 @@
         }
     }
 
+    //Update Methods Collection 
     var updateMethods=function(){
         return{
             specific:function(val,index){
@@ -107,17 +110,11 @@
     var add=new addMethods();
     var del=new delMethods();
     var updt=new updateMethods();
-    
+
     console.log('Array:',globalArray);
     //del.specific(0);
     //add.last(3);
     //del.last();
     //updt.specific(100,2);
-   // console.log(globalArray);
-   document.getElementById("asd").innerHTML="Array: "+ globalArray.toString();
-   
+    console.log(globalArray); 
 })();
-
-
-
-
