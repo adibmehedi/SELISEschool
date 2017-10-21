@@ -2,6 +2,10 @@
     "use strict";
 
     var taskArray = [];
+    var isEditMode = false;
+    var inputTask;
+    var btnInput;
+
     if (!(localStorage.getItem("tasks") === null)) {
         taskArray = JSON.parse(localStorage.tasks);
     }
@@ -153,11 +157,45 @@
     }
 
     var btnInputEvent = function () {
-        var inputValue = inputTask.value;
-        console.log("Input Button Presed");
-        addTaskToStorage(inputValue);
-        inputTask.value = "";
-        render.displayTasks();
+        if (isEditMode == false) {
+            var inputValue = inputTask.value;
+            console.log("Input Button Presed");
+            addTaskToStorage(inputValue);
+            inputTask.value = "";
+            render.displayTasks();
+        } //EDITING
+        else {
+            var editTaskId = inputTask.getAttribute('data');
+            console.log("Editing: ", editTaskId);
+
+            //Get Every taskFrom Local Storage
+            if (!(localStorage.getItem("tasks") === null)) {
+                taskArray = JSON.parse(localStorage.tasks);
+            }
+            //Find and insert to temporary
+            var i;
+            for (i = 0; i < taskArray.length; i++) {
+                if (taskArray[i].id == editTaskId) {
+                    taskArray[i].name = inputTask.value;
+                }
+            }
+            //Before Adding task to storage, sorting takes place
+            function compare(a, b) {
+                if (a.name < b.name)
+                    return -1;
+                if (a.name > b.name)
+                    return 1;
+                return 0;
+            }
+            taskArray.sort(compare);
+
+
+            localStorage.setItem("tasks", JSON.stringify(taskArray));
+            inputTask.value = "";
+            //After editing done. set mode to false
+            isEditMode = false;
+            render.displayTasks();
+        }
     }
 
     var btnFilterAllEvent = function () {
@@ -208,14 +246,32 @@
             }
         }
         localStorage.setItem("tasks", JSON.stringify(taskArray));
-        console.log("CheckboxEffect",taskArray);
+        console.log("CheckboxEffect", taskArray);
         render.displayTasks();
+    }
+
+    var btnEditEvent = function () {
+        console.log("Edit:", this.value);
+        var editItemId = this.value;
+        //Get Every taskFrom Local Storage
+        if (!(localStorage.getItem("tasks") === null)) {
+            taskArray = JSON.parse(localStorage.tasks);
+        }
+        var i;
+        for (i = 0; i < taskArray.length; i++) {
+            if (taskArray[i].id == editItemId) {
+                inputTask.value = taskArray[i].name;
+                inputTask.setAttribute('data', editItemId);
+            }
+        }
+        btnInput.innerText = "Save Change";
+        isEditMode = true;
     }
 
     var domBinding = function () {
         //Doms
-        var inputTask = document.getElementById('inputTask');
-        var btnInput = document.getElementById('btnInput');
+        inputTask = document.getElementById('inputTask');
+        btnInput = document.getElementById('btnInput');
         var btnFilterAll = document.getElementById('btnFilterAll');
         var btnFilterActive = document.getElementById('btnFilterActive');
         var btnFilterCompleted = document.getElementById('btnFilterCompleted');
@@ -226,9 +282,13 @@
         }
 
         var checkboxButtons = document.querySelectorAll(".checkbox");
-        console.log(checkboxButtons);
         for (var i = 0; i < checkboxButtons.length; i++) {
             checkboxButtons[i].addEventListener('change', checkboxButtonEvent);
+        }
+
+        var editButtons = document.querySelectorAll(".edit");
+        for (var i = 0; i < editButtons.length; i++) {
+            editButtons[i].addEventListener('click', btnEditEvent);
         }
         //Events
         btnInput.addEventListener('click', btnInputEvent);
@@ -242,9 +302,7 @@
     function init() {
         domBinding();
         render.displayTasks();
-        //localStorage.setItem("tasks", JSON.stringify(taskArray));
-        //var t = JSON.parse(localStorage.taskArray);
-        //console.log(t);
+
     }
     init();
 })();
