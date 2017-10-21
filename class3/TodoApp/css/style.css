@@ -1,0 +1,45 @@
+body{
+    height: 100%;
+    width: 100%;
+    background-image:url('../img/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container-fluid .row{
+    padding-top:40px;
+}
+
+.inputDiv{
+    width:500px;
+    padding-top:50px;
+    padding-left:150px;
+}
+
+.inputDiv button{
+    margin-top:20px;
+    width:350px;
+}
+
+#taskList{
+    width:500px;
+}
+
+.panel{
+    opacity: 0.8;
+}
+
+.checkbox{
+    display: inline-block;
+    margin: 10px;
+}
+
+.task span{
+    padding-left:10px;
+    font-size:18px;
+}
+#edit,#delete{
+    float:right;
+    margin:2px 5px;
+}
