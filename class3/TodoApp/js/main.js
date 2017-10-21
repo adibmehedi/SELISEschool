@@ -11,14 +11,14 @@
     var renderFunctions = function () {
         var taskListDiv = document.getElementById("taskList");
         var taskDivs = document.getElementsByClassName("task");
-        
+
         //Clear Display Elements
-        var clearDisplay=function(){
+        var clearDisplay = function () {
             while (taskDivs[0]) {
                 taskDivs[0].parentNode.removeChild(taskDivs[0]);
             }
         }
-       
+
         //Display Tasks Function
         var displayTasks = function () {
             clearDisplay();
@@ -53,33 +53,43 @@
             }
 
             //Write New Elements
-            var counter = 0;
             taskArray.forEach(function (task) {
                 var div = document.createElement("div");
                 div.className = "panel-body task";
+
+                //Checkbox
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.className = "checkbox";
+                checkbox.id = task.id;
+                if (task.type == "complete") {
+                    checkbox.checked = true;
+                } else {
+                    checkbox.checked = false;
+                }
+                div.appendChild(checkbox);
                 //Span
-                var span=document.createElement("span");
-                span.innerHTML = task.name;
+                var span = document.createElement("span");
+                span.innerHTML = task.name + " " + task.id;
                 div.appendChild(span);
                 //Edit Button
-                var btnEdit=document.createElement("button");
+                var btnEdit = document.createElement("button");
                 btnEdit.innerHTML = "Edit";
                 btnEdit.className = "btn btn-warning edit";
-                btnEdit.id="edit";
-                btnEdit.value=counter;
+                btnEdit.id = "edit";
+                btnEdit.value = task.id;
                 div.appendChild(btnEdit);
                 //Edit Button
-                var btnDelete=document.createElement("button");
+                var btnDelete = document.createElement("button");
                 btnDelete.innerHTML = "Delete";
                 btnDelete.className = "btn btn-danger delete";
-                btnDelete.id="delete";
-                btnDelete.value=counter;
+                btnDelete.id = "delete";
+                btnDelete.value = task.id;
                 div.appendChild(btnDelete);
 
                 taskListDiv.appendChild(div);
 
                 console.log(task);
-                counter++;
             }, this);
 
             //BInding event with new doms
@@ -92,9 +102,27 @@
     }
     var render = new renderFunctions;
 
+    //Get Last task ID function 
+    var getLastTaskIdFromStorage = function () {
+        var taskId = 0;
+        if (!(localStorage.getItem("tasks") === null)) {
+            taskArray = JSON.parse(localStorage.tasks);
+            for (var i = 0; i < taskArray.length; i++) {
+                if (taskId < taskArray[i].id) {
+                    taskId = taskArray[i].id;
+                }
+            }
 
-    var createNewTask = function (value) {
+        }
+        return taskId;
+    }
+
+    var createNewTask = function (value, taskId) {
+        //Get Last task ID
+        var taskId = getLastTaskIdFromStorage() + 1;
+        console.log("Task Id:", taskId);
         return {
+            'id': taskId,
             'name': value,
             'type': "active"
         }
@@ -107,8 +135,9 @@
             taskArray = JSON.parse(localStorage.tasks);
         }
 
+        var newTask = createNewTask(value);
         //Adding task to global task array
-        taskArray.push(createNewTask(value));
+        taskArray.push(newTask);
         //Before Adding task to storage, sorting takes place
         function compare(a, b) {
             if (a.name < b.name)
@@ -145,8 +174,42 @@
         render.displayTasks();
     }
 
-    var btnDeleteEvent=function(){
-       console.log(this.value);
+    var btnDeleteEvent = function () {
+        var deleteItemId = this.value;
+        //Get Every taskFrom Local Storage
+        if (!(localStorage.getItem("tasks") === null)) {
+            taskArray = JSON.parse(localStorage.tasks);
+        }
+        var i;
+        for (i = 0; i < taskArray.length; i++) {
+            if (taskArray[i].id == deleteItemId) {
+                taskArray.splice(i, 1);
+            }
+        }
+        localStorage.setItem("tasks", JSON.stringify(taskArray));
+        render.displayTasks();
+        console.log("Delete Button Pressed", this.value);
+    }
+
+    var checkboxButtonEvent = function () {
+        var changeItemId = this.id;
+        //Get Every taskFrom Local Storage
+        if (!(localStorage.getItem("tasks") === null)) {
+            taskArray = JSON.parse(localStorage.tasks);
+        }
+        var i;
+        for (i = 0; i < taskArray.length; i++) {
+            if (taskArray[i].id == changeItemId) {
+                if (taskArray[i].type == 'active') {
+                    taskArray[i].type = 'complete';
+                }
+                else
+                    taskArray[i].type = 'active';
+            }
+        }
+        localStorage.setItem("tasks", JSON.stringify(taskArray));
+        console.log("CheckboxEffect",taskArray);
+        render.displayTasks();
     }
 
     var domBinding = function () {
@@ -157,10 +220,16 @@
         var btnFilterActive = document.getElementById('btnFilterActive');
         var btnFilterCompleted = document.getElementById('btnFilterCompleted');
 
-         var deleteButtons = document.querySelectorAll(".delete");
-         for(var i=0;i<deleteButtons.length;i++){
-            deleteButtons[i].addEventListener('click',btnDeleteEvent);
-         }
+        var deleteButtons = document.querySelectorAll(".delete");
+        for (var i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener('click', btnDeleteEvent);
+        }
+
+        var checkboxButtons = document.querySelectorAll(".checkbox");
+        console.log(checkboxButtons);
+        for (var i = 0; i < checkboxButtons.length; i++) {
+            checkboxButtons[i].addEventListener('change', checkboxButtonEvent);
+        }
         //Events
         btnInput.addEventListener('click', btnInputEvent);
         btnFilterAll.addEventListener('click', btnFilterAllEvent);
