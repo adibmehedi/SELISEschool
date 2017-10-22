@@ -40,17 +40,17 @@
         var makeFilterButtonActive = function (btnName) {
             if (btnName == 'all') {
                 btnFilterAll.style.opacity = "1";
-                btnFilterActive.style.opacity = "0.5";
-                btnFilterCompleted.style.opacity = "0.5";
+                btnFilterActive.style.opacity = "0.7";
+                btnFilterCompleted.style.opacity = "0.7";
             }
             if (btnName == 'active') {
-                btnFilterAll.style.opacity = "0.5";
+                btnFilterAll.style.opacity = "0.7";
                 btnFilterActive.style.opacity = "1";
-                btnFilterCompleted.style.opacity = "0.5";
+                btnFilterCompleted.style.opacity = "0.7";
             }
             if (btnName == 'complete') {
-                btnFilterAll.style.opacity = "0.5";
-                btnFilterActive.style.opacity = "0.5";
+                btnFilterAll.style.opacity = "0.7";
+                btnFilterActive.style.opacity = "0.7";
                 btnFilterCompleted.style.opacity = "1";
             }
         }

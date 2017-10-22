@@ -27,7 +27,7 @@ body{
 }
 
 .panel{
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .checkbox{
@@ -42,4 +42,8 @@ body{
 #edit,#delete{
     float:right;
     margin:2px 5px;
+}
+
+#btnFilterAll, #btnFilterActive, #btnFilterCompleted{
+    margin:0px 5px;
 }
