@@ -36,87 +36,83 @@
             }
         }
 
+        //Set Button Opacity Value
+        var setButtonOpacity = function (btnFilterAllValue, btnFilterActiveValue, btnFilterCompletedValue) {
+            btnFilterAll.style.opacity = btnFilterAllValue;
+            btnFilterActive.style.opacity = btnFilterActiveValue;
+            btnFilterCompleted.style.opacity = btnFilterCompletedValue;
+        }
+
         //Make Filter Active
         var makeFilterButtonActive = function (btnName) {
             if (btnName == 'all') {
-                btnFilterAll.style.opacity = "1";
-                btnFilterActive.style.opacity = "0.7";
-                btnFilterCompleted.style.opacity = "0.7";
+                setButtonOpacity(1, 0.7, 0.7);
             }
             if (btnName == 'active') {
-                btnFilterAll.style.opacity = "0.7";
-                btnFilterActive.style.opacity = "1";
-                btnFilterCompleted.style.opacity = "0.7";
+                setButtonOpacity(0.7, 1, 0.7);
             }
             if (btnName == 'complete') {
-                btnFilterAll.style.opacity = "0.7";
-                btnFilterActive.style.opacity = "0.7";
-                btnFilterCompleted.style.opacity = "1";
+                setButtonOpacity(0.7, 0.7, 1);
             }
         }
 
+        var createElement = function (tagName, className = null, parentTag = null, id = null, value = null) {
+            var elem = document.createElement(tagName);
+            elem.className = className;
+            elem.value = value;
+            elem.id = id;
+            parentTag.appendChild(elem);
+
+            return elem;
+        }
+
+        //Create Div Element 
+        var createDiv = function (className, parentTag, id) {
+            return createElement('div', className, parentTag, id);
+        }
+
+        var createButton = function (className, parentTag, id, btnText,value=null) {
+            var elem = createElement('button', className, parentTag, id, value);
+            elem.innerText = btnText;
+            return elem;
+        }
+
+        var createInput = function (className, parentTag, id, placeholder) {
+            var elem = createElement('input', className, parentTag, id);
+            elem.type = "text";
+            elem.placeholder = placeholder;
+            return elem;
+        }
+
+        var createCheckbox=function(className, parentTag, id){
+            var elem = createElement('input', className, parentTag, id);
+            elem.type = "checkbox";
+            return elem;
+        }
+
+        var createSpan=function(innerText, parentTag){
+            var elem = createElement('span','', parentTag);
+            elem.innerText=innerText;   
+            return elem;
+        }
+
+
+
         //Display Static Parts
         var displayStaticParts = function (_callback) {
-            //<div class="container-fluid">
-            var div_container_fluid = document.createElement("div");
-            div_container_fluid.className = "container-fluid";
-                // <div class="row">
-                var div_row = document.createElement("div");
-                div_row.className = "row";
-                div_container_fluid.appendChild(div_row);
-                    // <div class="col-md-6">
-                    var div_col_md_6_first = document.createElement("div");
-                    div_col_md_6_first.className = "col-md-6";
-                    div_row.appendChild(div_col_md_6_first);
-                        // <div class="form-group inputDiv">
-                        var div_form_group_inputDiv=document.createElement("div");
-                        div_form_group_inputDiv.className="form-group inputDiv";
-                        div_col_md_6_first.appendChild(div_form_group_inputDiv);
-                            //<input>
-                            var input_inputTask= document.createElement("input");
-                            input_inputTask.type="text";
-                            input_inputTask.className="form-control input-lg";
-                            input_inputTask.id="inputTask";
-                            input_inputTask.placeholder="type task";
-                            div_form_group_inputDiv.appendChild(input_inputTask);
-                            //<button>
-                            var button_btnInput= document.createElement("button");
-                            button_btnInput.className="btn btn-success";
-                            button_btnInput.id="btnInput"
-                            button_btnInput.innerText="Add Task";
-                            div_form_group_inputDiv.appendChild(button_btnInput);
-                    // <div class="col-md-6">
-                    var div_col_md_6_second = document.createElement("div");
-                    div_col_md_6_second.className = "col-md-6";
-                    div_row.appendChild(div_col_md_6_second);
-                         // <div class="form-group form-inline">
-                         var div_form_group_form_inline=document.createElement("div");
-                         div_form_group_form_inline.className="form-group form-inline";
-                         div_col_md_6_second.appendChild(div_form_group_form_inline);
-                            //button
-                            var button_all= document.createElement("button");
-                            button_all.className="btn btn-success";
-                            button_all.id="btnFilterAll";
-                            button_all.innerText="All";
-                            div_form_group_form_inline.appendChild(button_all);
-                            //button
-                            var button_active= document.createElement("button");
-                            button_active.className="btn btn-success";
-                            button_active.id="btnFilterActive";
-                            button_active.innerText="Active";
-                            div_form_group_form_inline.appendChild(button_active);
-                            //button
-                            var button_complete= document.createElement("button");
-                            button_complete.className="btn btn-success";
-                            button_complete.id="btnFilterCompleted";
-                            button_complete.innerText="Completed";
-                            div_form_group_form_inline.appendChild(button_complete);
-                        // <div class="panel" id="taskList">   
-                        var div_panel=document.createElement("div");
-                        div_panel.className="panel";
-                        div_panel.id="taskList";
-                        div_col_md_6_second.appendChild(div_panel);
-            document.body.appendChild(div_container_fluid);
+            var div_container_fluid = createDiv("container-fluid", document.body, );
+            var div_row = createDiv("row", div_container_fluid);
+            var div_col_md_6_first = createDiv("col-md-6", div_row);
+            var div_form_group_inputDiv = createDiv("form-group inputDiv", div_col_md_6_first);
+            var input_inputTask = createInput('form-control input-lg', div_form_group_inputDiv, 'inputTask', 'type task');
+            var button_btnInput = createButton('btn btn-success', div_form_group_inputDiv, 'btnInput', 'Add Task');
+            var div_col_md_6_second = createDiv("col-md-6", div_row);
+            var div_form_group_form_inline = createDiv("form-group form-inline", div_col_md_6_second);
+            var button_all = createButton('btn btn-success', div_form_group_form_inline, 'btnFilterAll', 'All');
+            var button_active = createButton('btn btn-success', div_form_group_form_inline, 'btnFilterActive', 'Active');
+            var button_complete = createButton('btn btn-success', div_form_group_form_inline, 'btnFilterCompleted', 'Completed');
+            var div_panel = createDiv("panel", div_col_md_6_second, 'taskList');
+
             _callback();
         }
 
@@ -125,14 +121,12 @@
             clearDisplay();
             //Filing Global Task Array accoring to choice
             if (!(localStorage.getItem("task-filter") === null)) {
+                //Get Every taskFrom Local Storage
+                initStorageTaskDataToArray();
                 if (localStorage.getItem("task-filter") == "all") {
-                    //Get Every taskFrom Local Storage
-                    initStorageTaskDataToArray();
                     makeFilterButtonActive("all");
                 }
                 if (localStorage.getItem("task-filter") == "active") {
-                    //Get Every taskFrom Local Storage
-                    initStorageTaskDataToArray();
                     //Filter
                     taskArray = taskArray.filter(function (task) {
                         return task.type == 'active';
@@ -140,8 +134,6 @@
                     makeFilterButtonActive("active");
                 }
                 if (localStorage.getItem("task-filter") == "complete") {
-                    //Get Every taskFrom Local Storage
-                    initStorageTaskDataToArray();
                     //Filter
                     taskArray = taskArray.filter(function (task) {
                         return task.type == 'complete';
@@ -152,45 +144,19 @@
 
             //Write New Elements
             taskArray.forEach(function (task) {
-                var div = document.createElement("div");
-                div.className = "panel-body task";
-
-                //Checkbox
-                var checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.className = "checkbox";
-                checkbox.id = task.id;
+                taskListDiv = document.getElementById("taskList");
+                var div = createDiv("panel-body task", taskListDiv);
+                var checkbox = createCheckbox('checkbox',div,task.id);
                 if (task.type == "complete") {
                     checkbox.checked = true;
                 } else {
                     checkbox.checked = false;
                 }
-                div.appendChild(checkbox);
-                //Span
-                var span = document.createElement("span");
-                span.innerHTML = task.name;
-                div.appendChild(span);
-                //Delete Button
-                var btnDelete = document.createElement("button");
-                btnDelete.innerHTML = "Delete";
-                btnDelete.className = "btn btn-danger delete";
-                btnDelete.id = "delete";
-                btnDelete.value = task.id;
-                div.appendChild(btnDelete);
-                //Edit Button
-                var btnEdit = document.createElement("button");
-                btnEdit.innerHTML = "Edit";
-                btnEdit.className = "btn btn-warning edit";
-                btnEdit.id = "edit";
-                btnEdit.value = task.id;
-                div.appendChild(btnEdit);
-                
-                taskListDiv = document.getElementById("taskList");
-                taskListDiv.appendChild(div);
-
+                var span =createSpan(task.name,div);
+                var btnDelete = createButton('btn btn-danger delete',div,'delete','Delete',task.id);
+                var btnEdit = createButton('btn btn-warning edit',div,'edit','Edit',task.id);
                 console.log(task);
             }, this);
-
             //BInding event with new doms
             domBinding();
         }
@@ -393,7 +359,7 @@
         render.displayStaticParts(domBinding);
         //domBinding();
         render.displayTasks();
-        
+
     }
     init();
 })();
