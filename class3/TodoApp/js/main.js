@@ -196,7 +196,7 @@
     }
 
     var addTaskToStorage = function (value) {
-        //fill global Task Array from data of Local Storage
+
         //Get Every taskFrom Local Storage
         initStorageTaskDataToArray();
 
@@ -218,6 +218,11 @@
     }
 
     var btnInputEvent = function () {
+        //Check if input is empty
+        if(inputTask.value==""){
+            alert("Type Something !");
+            return;
+        }
         if (isEditMode == false) {
             var inputValue = inputTask.value;
             console.log("Input Button Presed");
@@ -282,6 +287,12 @@
             }
         }
         localStorage.setItem("tasks", JSON.stringify(taskArray));
+        if(isEditMode){
+            isEditMode=false;
+            inputTask.value=null;
+            btnInput.innerText = "Add Task";
+        }
+       
         render.displayTasks();
         console.log("Delete Button Pressed", this.value);
     }
